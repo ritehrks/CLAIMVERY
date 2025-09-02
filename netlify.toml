@@ -1,14 +1,15 @@
+# This file is the single source of truth for your build settings.
 [build]
-  # Command to build the frontend
-  command = "cd frontend && npm run build"
+  # This command tells Netlify: go into the frontend folder, then build it.
+  command = "cd frontend && npm install && npm run build"
 
-  # The final built frontend files
+  # This is where the built frontend files are located.
   publish = "frontend/dist"
 
-  # The backend server code
+  # This is where your backend server code is located.
   functions = "backend"
 
-# Redirect rule to connect frontend to backend
+# This rule connects your frontend to your backend.
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server/:splat"
