@@ -1,0 +1,15 @@
+# This is the configuration for your frontend
+[build]
+  command = "npm run build"
+  publish = "frontend/dist"
+  base = "frontend"
+
+# This configures your backend as a Netlify Function
+[functions]
+  directory = "backend"
+
+# This rule makes your backend accessible
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
