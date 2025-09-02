@@ -1,12 +1,12 @@
-# Frontend build settings
 [build]
-  base    = "frontend"
-  publish = "frontend/dist"
-  command = "npm run build"
+  # Command to build the frontend
+  command = "cd frontend && npm run build"
 
-# Backend function settings
-[functions]
-  directory = "../backend" # <-- THIS IS THE FIX
+  # The final built frontend files
+  publish = "frontend/dist"
+
+  # The backend server code
+  functions = "backend"
 
 # Redirect rule to connect frontend to backend
 [[redirects]]
