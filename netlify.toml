@@ -1,9 +1,15 @@
+# This configuration is explicit and runs from the project root.
 [build]
-  base    = "frontend"
+  # Command: Go into the frontend folder, install its dependencies, then build it.
+  command = "cd frontend && npm install && npm run build"
+
+  # The location of the built frontend files.
   publish = "frontend/dist"
-  command = "npm run build"
+
+  # The location of your backend server code.
   functions = "backend"
 
+# The rule to connect the frontend to the backend API.
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server/:splat"
