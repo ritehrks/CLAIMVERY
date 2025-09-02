@@ -1,15 +1,19 @@
-# This configuration is explicit and runs from the project root.
-[build]
-  # Command: Go into the frontend folder, install its dependencies, then build it.
-  command = "cd frontend && npm install && npm run build"
+# This is the final and definitive configuration for your project.
+# It handles the monorepo structure by running commands from the root.
 
-  # The location of the built frontend files.
+[build]
+  # This command does two things:
+  # 1. `npm install`: Installs dependencies for BOTH frontend and backend from the root.
+  # 2. `npm run build -w frontend`: Runs the 'build' script ONLY for the 'frontend' workspace.
+  command = "npm install && npm run build -w frontend"
+
+  # The location of your built frontend files (relative to the project root).
   publish = "frontend/dist"
 
-  # The location of your backend server code.
+  # The location of your backend serverless function (relative to the project root).
   functions = "backend"
 
-# The rule to connect the frontend to the backend API.
+# This rule makes your backend API available at the /api/ endpoint.
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server/:splat"
